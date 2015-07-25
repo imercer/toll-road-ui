@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-teal.min.css" /> 
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/styles.css">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link rel="stylesheet" href="/css/iframe.css">
 </head>
 <body>
 <!-- Always shows a header, even in smaller screens. -->
@@ -13,18 +16,17 @@
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <!--<nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href=""><b>Home</b></a>
         <a class="mdl-navigation__link" href="/pay.html">Pay a Toll</a>
         <a class="mdl-navigation__link" href="/account.html">View Account</a>
         <a class="mdl-navigation__link" href="/notice.html">Pay a Notice</a>
-      </nav>
+      </nav>-->
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Toll Road</span>
+    <span class="mdl-layout-title"><a href="/">Toll Road</a></span>
     <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Home</a>
         <a class="mdl-navigation__link" href="/pay.html">Pay a Toll</a>
         <a class="mdl-navigation__link" href="/account.html">View Account</a>
         <a class="mdl-navigation__link" href="/notice.html">Pay a Notice</a>
@@ -33,19 +35,18 @@
   <main class="mdl-layout__content">
     <div class="page-content">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col">
+          <div class="mdl-cell mdl-cell--6-col" style="line-height: 1.5">
               <h3>Toll Tarrifs</h3>
                 <h5>Light Vehicles and motorcycles</h5>
-                  <b>Northern Gateway Toll Road:</b> $2.20
-                  <b>Tauranga Eastern Link Toll Road:</b> $2.00
-                  <b>Takitimu Drive Toll Road:</b> $1.80
+                  <b>Northern Gateway Toll Road:</b> $2.20<br>
+                  <b>Tauranga Eastern Link Toll Road:</b> $2.00<br>
+                  <b>Takitimu Drive Toll Road:</b> $1.80<br>
                 <h5>Heavy Vehicles</h5>
-                  <b>Northern Gateway Toll Road:</b> $4.40
-                  <b>Tauranga Eastern Link Toll Road:</b> $5.00
-                  <b>Takitimu Drive Toll Road:</b> $4.80
+                  <b>Northern Gateway Toll Road:</b> $4.40<br>
+                  <b>Tauranga Eastern Link Toll Road:</b> $5.00<br>
+                  <b>Takitimu Drive Toll Road:</b> $4.80<br>
           </div>
-          <div class="mdl-cell mdl-cell--6-col"><h3>Your Account</h3></div>
-          <div class="mdl-cell mdl-cell--4-col"><h3>Latest Toll Road News</h3></div>
+          <div class="mdl-cell mdl-cell--6-col"><h3>Latest Toll Road News</h3></div>
         </div>
       </div>
   </main>

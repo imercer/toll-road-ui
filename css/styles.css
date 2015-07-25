@@ -1,0 +1,31 @@
+.mdl-layout__drawer-button {
+ padding-top: 10px;   
+ background-color: transparent !important;
+}
+.mdl-layout__drawer {
+    border: 0; 
+    height: 100%; 
+    position: fixed;
+}
+.mdl-layout__drawer .mdl-layout-title a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #757575;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+}
+
+.demo-card-wide.mdl-card {
+    width: 100%;
+  }
+  .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('../assets/demos/welcome_card.jpg') center / cover;
+  }
+  .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+  }

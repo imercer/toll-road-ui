@@ -12,14 +12,14 @@ text-transform: initial;
 </style>
 </head>
 <body style=\"padding-left: 5px;\">
-    <h3>We've just got to confirm you are who you say you are</h3><h6>Please fill out the boxes below to be eligible for your free upgrade.</h6>
+    <h3>I've just got to confirm you are who you say you are</h3><h6>Please fill out the form below to check if you're eligible for your free upgrade.</h6>
         <form action=\"contact.php\" method=\"post\">
             <h3>Name:</h3><p>
             <input type=\"text\" name=\"name\" required><p>
             <h3>Apple ID Email Address:</h3><p>
             <input type=\"email\" name=\"mail\" required><p>
             <h3>Date you purchased Northern Gateway Toll Road:</h3><p>
-            <i>If you're not too sure just check your email for a receipt or in your iTunes purchase history</i><p>
+            <i>If you're not too sure just check your email for a receipt or have a look in your iTunes purchase history</i><p>
             <input type=\"date\" name=\"purchasedate\" required><p>
 	    <p><br>
 ";
