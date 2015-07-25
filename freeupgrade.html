@@ -1,0 +1,30 @@
+<head>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-teal.min.css" /> 
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+.mdl-button {
+text-transform: initial;
+}
+</style>
+</head>
+<body style="padding-left: 5px; text-align: center">
+    <h3>We've just got to confirm you are who you say you are</h3><h6>Please fill out the boxes below to be eligible for your free upgrade.</h6>
+<form action="contact.php" method="post">
+            <h3>Name:</h3><p>
+            <input type="text" name="name" required=""></p><p>
+            </p><h3>Apple ID Email Address:</h3><p>
+            <input type="email" name="mail" required=""></p><p>
+            </p><h3>Do you use nOS:</h3><p>
+            <input type="radio" name="version" value="Yes" required=""> Yes<br>
+            <input type="radio" name="version" value="No" required=""> No<br>
+            <input type="radio" name="version" value="I'm Looking at Using nOS" required=""> I'm Looking at Using nOS<br>
+            </p><h3>Comment:</h3>
+            <p><textarea name="comment" required="" style="width: 120%; height: 30%"></textarea>
+	    </p><p><br>
+Prove that you are human! Solve this 10 + 1 ? 	    <input type="text" name="answer" id="answer" size="5">
+	    </p><p>
+            <input type="submit" value="Submit">
+            <br>
+        </p></form>
+</body>

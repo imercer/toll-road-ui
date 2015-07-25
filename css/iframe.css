@@ -7,5 +7,5 @@ height: calc(100% - 64px);
 height: -moz-calc(100% - 64px);
 height: -webkit-calc(100% - 64px);
 height: -o-calc(100% - 64px);
-border: 0;
+overflow-x: scroll;
 }
