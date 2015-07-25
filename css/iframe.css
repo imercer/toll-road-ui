@@ -1,0 +1,11 @@
+iframe  {
+width: calc(100% - 5px);
+width: -moz-calc(100% - 5px);
+width: -webkit-calc(100% - 5px);
+width: -o-calc(100% - 5px);    
+height: calc(100% - 64px);
+height: -moz-calc(100% - 64px);
+height: -webkit-calc(100% - 64px);
+height: -o-calc(100% - 64px);
+border: 0;
+}
