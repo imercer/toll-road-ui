@@ -1,0 +1,62 @@
+<head>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+<script src="/analytics.js"></script>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/iframe.css">
+<link rel="stylesheet" href="/css/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Preferences</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <!--<nav class="mdl-navigation mdl-layout--large-screen-only">
+
+        <a class="mdl-navigation__link" href=""><b>Pay a Toll</b></a>
+        <a class="mdl-navigation__link" href="/account.html">View Account</a>
+        <a class="mdl-navigation__link" href="/notice.html">Pay a Notice</a>
+      </nav>-->
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title"><a href="/">Toll Road</a></span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Pay a Toll</a>
+        <a class="mdl-navigation__link" href="/account.html">View Account</a>
+        <a class="mdl-navigation__link" href="/notice.html">Pay a Notice</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content" style="text-align: center">
+        <center>
+       <div style="width: 90%; padding: 15px; text-align: center">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table- mdl-shadow--2dp" style="width: 100%;">
+  <tbody>
+      <tr onclick="window.document.location='quickpay.php';">
+        <td class="mdl-data-table__cell--non-numeric"><i class="material-icons">local_offer</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quick Payment Settings</td>
+        </tr> </a>
+    <tr onclick="window.document.location='details.php';">
+      <td class="mdl-data-table__cell--non-numeric"><i class="material-icons">beenhere</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stored Details</td>
+    </tr>
+    <tr onclick="window.document.location='about.html';">
+      <td class="mdl-data-table__cell--non-numeric"><i class="material-icons">info</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About this app</td>
+    </tr>
+    <tr onclick="window.document.location='mailto:isaac@isaacscomputertips.com?subject=Toll%20Road%20app%20feedback&body=Insert%20your%20message%20here.%20If%20you\'re%20reporting%20an%20issue%20please%20state%20the%20issue%20clearly\,%20include%20your%20device%20type%20and%20how%20you%20replicate%20the%20issue.';">
+      <td class="mdl-data-table__cell--non-numeric"><i class="material-icons">feedback</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send Feedback</td>
+    </tr>
+  </tbody>
+</table>
+    <br>
+<i>Created in Auckland, New Zealand</i>
+</div>
+      </div>
+  </main>
+</div>
+</body>

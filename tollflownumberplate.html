@@ -1,0 +1,28 @@
+<head>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-teal.min.css" /> 
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+<script src="/analytics.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="/css/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/iframe.css">
+<style>
+.mdl-button {
+text-transform: initial;
+}
+</style>
+</head>
+<body style="padding-left: 5px; text-align: left">
+    <h3>First things first</h3><h6>Please enter your vehicle's license plate number to proceed.</h6>
+<form action="/paytollclass/verifyplate.php" method="post" id="numberplateverify">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+    <input class="mdl-textfield__input" type="text" pattern="^[a-zA-Z0-9]{0,6}$" id="plate" name="plate" required/>
+    <label class="mdl-textfield__label" for="plate">License Plate Number</label>
+    <span class="mdl-textfield__error">Please enter your vehicle license plate number</span>
+  </div>
+        <br><br>
+</form>
+<button type="submit" form="numberplateverify" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+  Next Step
+</button>
+</body>
