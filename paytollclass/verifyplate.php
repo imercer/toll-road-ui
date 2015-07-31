@@ -20,8 +20,28 @@ text-transform: initial;
 <?php    
 // Process Plate Number
 $plateno = $_POST['plate'];
-$vdetailsurl = "https://tolling.nzta.govt.nz/GetVehicleInfoAndIsActiveVehicle.aspx?CountryCode=NZ&RegionCode=ANY&Captcha=&LicensePlate=$plateno";
-$vdetails = file_get_contents($vdetailsurl);
+$opts = array (
+    'http'=>array(
+        'method'=>"GET",
+        'header'=>"
+Host: tollingonline.nzta.govt.nz
+Connection: keep-alive
+Accept: application/json, text/plain, */*
+RequestVerificationToken: Tgpw9gAsyq4Sag6V-KK-77-GSDARxMEtT4YXquSBgXIfRIWBvMQAM5CYNJj_3Rds5X_nX4DgYdruLKxuDAjGb0xSQVMK5swZYB0tTVs308w1:RGl4be2syBdvewW9sEeXndkuOALhqMeyPfVIdAIkOh4ipzNhVYyARr4h1YwM4Rs4ghcys0ZTIZCh8lOGlkcieqj9YHoLvXADU43BL06fJNQ1
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36
+DNT: 1
+Referer: https://tollingonline.nzta.govt.nz/
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-GB,en-US;q=0.8,en;q=0.6
+Cookie: f5avrbbbbbbbbbbbbbbbb=JLIGCHIODMMKAELCEJMLHEOEALMGFJJOONEINAMAIAIDKGIJLEEIMIMOHBIAJIEIELKGAALLIOIJDELBGOJFIOOAMBMBLGPHBPKOPGOMHEIBLAKPLDPHLMFANDMHLBPF; visid_incap_508956=QHn1qY3mTlSkW/B+uvKPTEXquVUAAAAAQUIPAAAAAACc9K3gIWSu0ldW6g0RiDF/; incap_ses_248_508956=S1hqFBbq8xVwE2f7PxNxA0bquVUAAAAAZQS6zIapdinquPLkAhwGxA==; __utmt=1; __RequestVerificationToken=Zr5L_V2hMeg3KALt7dqNHnhoOZLrhnj6Rr7xtafrKYyMkWcoezKOHIjVFrjT2mCKDF6tfcItj7YzLdDAm0cy2cFL3hQptFQSmeYjttHzt2I1; ASP.NET_SessionId=cffpwuh0l1ngjhnsbilwwhdr; __utma=19052071.392531670.1438247489.1438247489.1438247489.1; __utmb=19052071.12.10.1438247489; __utmc=19052071; __utmz=19052071.1438247489.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); f5avrbbbbbbbbbbbbbbbb=EIDPBKGJOIEMEJBNOOKJLCBAJGJLOFMJHLNBFKGPBOCDLFOPHDBKNDCBJINACMJGMLFBIPFMLBGPKHMBMOKLKNFNJIEHNABFCJDHEJGJIPPDEOJLEDPBHBDBKIGNFABP"
+  )
+);
+
+$context = stream_context_create($opts);
+//$vdetailsurl = "https://tolling.nzta.govt.nz/GetVehicleInfoAndIsActiveVehicle.aspx?CountryCode=NZ&RegionCode=ANY&Captcha=&LicensePlate=$plateno";
+$vdetailsurl = "https://tollingonline.nzta.govt.nz/api/VehicleSearch/?plateNumber=$plateno&transactionType=PurchaseTrip";
+//$vdetailsurl = "http://toll.nos.net.nz/simulatedplate.json";
+$vdetails = file_get_contents($vdetailsurl, false, $context);
 //echo $json;
 
 //Check if vehicle exists
@@ -38,7 +58,8 @@ if ($vexists == "null"){
 //Detect Tolling Class
 $class = substr($vdetails, strpos($vdetails, "OverallClass: ") + 14);
 list($classno) = explode(',', $class);
-$tariffurl = "https://tolling.nzta.govt.nz/GetPrePayTripPassTariff.aspx?OverallClassID=$classno";
+//$tariffurl = "https://tolling.nzta.govt.nz/GetPrePayTripPassTariff.aspx?OverallClassID=$classno";
+$tariffurl = "http://toll.nos.net.nz/fare.json";
 $tariff = file_get_contents($tariffurl);
 
 //Error if no payment is allowed
