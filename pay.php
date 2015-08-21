@@ -6,6 +6,23 @@
 <link rel="stylesheet" href="/css/iframe.css">
 <link rel="stylesheet" href="/css/styles.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script> 
+$.ajax({
+    type: "GET", 
+    url: "https://tollingonline.nzta.govt.nz/#/purchasetrips/prerequisites",
+    contentType: "application/html",
+    Host: "tollingonline.nzta.govt.nz",
+    Origin: "http://tollingonline.nzta.govt.nz",
+    beforeSend: function(xhr, settings){
+            xhr.setRequestHeader("Origin", "*");},
+    success: function(data){
+        $("#output_iframe_id").attr('src',"/")
+        $("#output_iframe_id").contents().find('html').html(data); 
+    }
+});
+    </script> 
 </head>
 <body>
 <!-- Always shows a header, even in smaller screens. -->
@@ -35,8 +52,9 @@
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">
-       <iframe src="tollflowdeclare.html"></iframe>
-       <!--<iframe src="tollflownumberplate.html"></iframe>-->
+        <!--<iframe scrolling="no" id="output_iframe_id" style="border: 0px none; margin-left: -185px; height: 859px; margin-top: -533px; width: 926px;">-->
+       <!-- Actual local page-->
+        <iframe src="tollflowdeclare.html"></iframe>
       </div>
   </main>
 </div>

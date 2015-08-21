@@ -20,28 +20,10 @@ text-transform: initial;
 <?php    
 // Process Plate Number
 $plateno = $_POST['plate'];
-$opts = array (
-    'http'=>array(
-        'method'=>"GET",
-        'header'=>"
-Host: tollingonline.nzta.govt.nz
-Connection: keep-alive
-Accept: application/json, text/plain, */*
-RequestVerificationToken: Tgpw9gAsyq4Sag6V-KK-77-GSDARxMEtT4YXquSBgXIfRIWBvMQAM5CYNJj_3Rds5X_nX4DgYdruLKxuDAjGb0xSQVMK5swZYB0tTVs308w1:RGl4be2syBdvewW9sEeXndkuOALhqMeyPfVIdAIkOh4ipzNhVYyARr4h1YwM4Rs4ghcys0ZTIZCh8lOGlkcieqj9YHoLvXADU43BL06fJNQ1
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36
-DNT: 1
-Referer: https://tollingonline.nzta.govt.nz/
-Accept-Encoding: gzip, deflate, sdch
-Accept-Language: en-GB,en-US;q=0.8,en;q=0.6
-Cookie: f5avrbbbbbbbbbbbbbbbb=JLIGCHIODMMKAELCEJMLHEOEALMGFJJOONEINAMAIAIDKGIJLEEIMIMOHBIAJIEIELKGAALLIOIJDELBGOJFIOOAMBMBLGPHBPKOPGOMHEIBLAKPLDPHLMFANDMHLBPF; visid_incap_508956=QHn1qY3mTlSkW/B+uvKPTEXquVUAAAAAQUIPAAAAAACc9K3gIWSu0ldW6g0RiDF/; incap_ses_248_508956=S1hqFBbq8xVwE2f7PxNxA0bquVUAAAAAZQS6zIapdinquPLkAhwGxA==; __utmt=1; __RequestVerificationToken=Zr5L_V2hMeg3KALt7dqNHnhoOZLrhnj6Rr7xtafrKYyMkWcoezKOHIjVFrjT2mCKDF6tfcItj7YzLdDAm0cy2cFL3hQptFQSmeYjttHzt2I1; ASP.NET_SessionId=cffpwuh0l1ngjhnsbilwwhdr; __utma=19052071.392531670.1438247489.1438247489.1438247489.1; __utmb=19052071.12.10.1438247489; __utmc=19052071; __utmz=19052071.1438247489.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); f5avrbbbbbbbbbbbbbbbb=EIDPBKGJOIEMEJBNOOKJLCBAJGJLOFMJHLNBFKGPBOCDLFOPHDBKNDCBJINACMJGMLFBIPFMLBGPKHMBMOKLKNFNJIEHNABFCJDHEJGJIPPDEOJLEDPBHBDBKIGNFABP"
-  )
-);
-
-$context = stream_context_create($opts);
 //$vdetailsurl = "https://tolling.nzta.govt.nz/GetVehicleInfoAndIsActiveVehicle.aspx?CountryCode=NZ&RegionCode=ANY&Captcha=&LicensePlate=$plateno";
-$vdetailsurl = "https://tollingonline.nzta.govt.nz/api/VehicleSearch/?plateNumber=$plateno&transactionType=PurchaseTrip";
-//$vdetailsurl = "http://toll.nos.net.nz/simulatedplate.json";
-$vdetails = file_get_contents($vdetailsurl, false, $context);
+//$vdetailsurl = "https://tollingonline.nzta.govt.nz/api/VehicleSearch/?plateNumber=$plateno&transactionType=PurchaseTrip";
+$vdetailsurl = "http://toll.nos.net.nz/simulatedplate.json";
+$vdetails = file_get_contents($vdetailsurl);
 //echo $json;
 
 //Check if vehicle exists
@@ -102,13 +84,13 @@ $model = ucfirst(strtolower($model));
 echo " $model. If I'm right you can fill out the fields below and proceed with payment. </span>";
 echo "</h6>";
 
-
+/*
 // Print Price
 $classtariffprice .= "</b><span style=\"text-transform: lowercase\">$classdescription</span>";
 echo "<h7>You'll need to pay <b>$$classtariffprice per trip</h7><br>";
 //https://tolling.nzta.govt.nz/GetPrePayTripPassTariff.aspx?OverallClassID=2
 //echo "<br> <img id=\"image\" src=\"loading-animation.gif\" style=\"width: 320px\"/>";
-
+*/
 // Collects the other details
 //MakeId
 $makeidraw = substr($vdetails, strpos($vdetails, "MakeId: ") + 8);
@@ -132,25 +114,55 @@ $_SESSION['vehiclemakeid'] = $makeid;
 $_SESSION['vehiclemodel'] = $model;
 $_SESSION['vehiclemodelid'] = $modelid;
 $_SESSION['userclass'] = $userclass;
+
+if ($userclassraw = "2") {
+    $tdprice = "1.80";
+    $ngtrprice = "2.20";
+    $telprice = "2.00";
+    $_SESSION['tdprice'] = "1.80";
+    $_SESSION['ngtrprice'] = "2.20";
+    $_SESSION['telprice'] = "2.00";
+    /*echo "<script>";
+    echo "window.onload = function(){ 
+    document.getElementById('ngtrips').onkeyup = function() {
+    var a = 2.20 * parseFloat(this.value);
+    var b = Number((a).toFixed(2));
+    document.getElementById(\"ngtrtotal\").innerHTML = b || 0;
+    }
+    }";
+    echo "</script>";*/
+}
+
 ?>
 <div class="mdl-tooltip" style="background-color: transparent" for="image" onclick="http://www.edmunds.com/?id=apis">
 <img src="100_red.png">
 </div>
 </h5>
 <form id="priortohandoff" action="priortohandoff.php" method="post">
+    <h3>How many trips do you want?</h3>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-    <input class="mdl-textfield__input" type="text" pattern="[1-9]|10" id="tripno" name="tripno" required/>
-    <label class="mdl-textfield__label" for="tripno">Number of Trips</label>
+    <input class="mdl-textfield__input" pattern="[0-9]|10" id="ngtrips" name="ngtrips" value="0" required/>
+    <label class="mdl-textfield__label" for="ngtrips">Northern Gateway Toll Road ($<?php echo $ngtrprice; ?> per trip)</label>
     <span class="mdl-textfield__error">You can purchase a maximum of 10 trips.</span>
-  </div> <br><br>
+  </div><br>
+    <!--<i id="ngtrtotal">$</i>-->
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+    <input class="mdl-textfield__input" pattern="[0-9]|10" id="teltrips" name="teltrips" value="0" required/>
+    <label class="mdl-textfield__label" for="teltrips">Tauranga Eastern Link Toll Road ($<?php echo $telprice; ?> per trip)</label>
+    <span class="mdl-textfield__error">You can purchase a maximum of 10 trips.</span>
+  </div><br>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+    <input class="mdl-textfield__input" pattern="[0-9]|10" id="tdtrips" name="tdtrips" value="0" required/>
+    <label class="mdl-textfield__label" for="tdtrips">Takitimu Drive Toll Road ($<?php echo $tdprice; ?> per trip)</label>
+    <span class="mdl-textfield__error">You can purchase a maximum of 10 trips.</span>
+  </div><br><br><br>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
     <input class="mdl-textfield__input" type="email" id="email" name="email" required/>
     <label class="mdl-textfield__label" for="email">Your email address</label>
-    <span class="mdl-textfield__error">Enter a valid email address to receive your receipt.</span>
+    <span class="mdl-textfield__error">Enter an email address to receive your receipt.</span>
   </div><br><br>
 </form>
 <button type="submit" form="priortohandoff" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
   Next Step
 </button><br><br><br>
- <i>At this stage you cant pay for trips you've already completed. You'll need to use the <a href="https://tolling.nzta.govt.nz/PurchaseTripPass.aspx">online form</a>.</i>
 </body>
