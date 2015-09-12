@@ -79,9 +79,9 @@ $("#opener").click( function() {
     </div>
     <!-- Bottom row, not visible on scroll -->
   </header>
-      <main class="mdl-layout__content mdl-color--grey-100">
+      <main class="mdl-layout__content mdl-color--grey-100" style="height: 100%">
         <div class="mdl-grid demo-content">
-          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col">
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col" style="padding: 15px">
 <h2>Payments Pending</h2>
 <ul style="list-style-type: none; padding: 0; margin: 0; line-height: 1.5">
 <style>
@@ -103,7 +103,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
      // output data of each row
      while($row = $result->fetch_assoc()) {
-         echo "<a href=\"pendingpayments.php?id=" . $row["id"] . "\"/> <h5>" . $row["plateno"] . "</h5><i>Paid:" . $row["timepaid"] . "</i> <a><br>";
+         echo "<a href=\"pendingpayments.php?id=" . $row["id"] . "\"/> <h5>" . $row["plateno"] . "</h5><i>Paid:" . $row["timepaid"] . "</i> </a><br>";
      }
 } else {
      echo "<br>No Pending Payments<br>";
@@ -115,12 +115,7 @@ $conn->close();
 <br>
 <br>
             </div>
-         <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col" style="line-height: 1">
-<style>
-    * {
-margin: 0;
-    }
-</style>
+         <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col" style="line-height: 1" style="padding: 15px">
 <?php
 //Grab Player Stuff from Variable
 $id = $_GET['id'];

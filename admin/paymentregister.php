@@ -4,11 +4,11 @@
 //$payer_id = $_POST['payer_id'];
 
 //TODO: Need to get the toll type, license plate and the trip numbers
-$plateno = $_POST['platno'];
-$ngtrtrips = $_POST['ngtrtrips'];
-$teltrips = $_POST['teltrips'];
-$tdtrips = $_POST['tdtrips'];
-$email = $_POST['email'];
+$plateno = $_GET['plateno'];
+$ngtrtrips = $_GET['ngtrtrips'];
+$teltrips = $_GET['teltrips'];
+$tdtrips = $_GET['tdtrips'];
+$email = $_GET['email'];
 
 $servername = "localhost";
 $username = "root";

@@ -104,7 +104,7 @@ $classdescription = $_SESSION['classdescription'];
 
 
     <!-- Custom value you want to send and process back in the IPN -->
-    <input type="hidden" name="custom" value="payment&plateno=<?php echo $plateno; ?>&ngtrtrips=<?php echo $ngtrtrips; ?>&teltrips=<?php echo $teltrips; ?>&tdtrips=<?php echo $tdtrips; ?>&email=<?php echo $email; ?>" />
+    <!--<input type="hidden" name="custom" value="payment&plateno=<?php /*echo $plateno; ?>&ngtrtrips=<?php echo $ngtrtrips; ?>&teltrips=<?php echo $teltrips; ?>&tdtrips=<?php echo $tdtrips; ?>&email=<?php echo $email; */?>" />-->
 
     <input type="hidden" name="shipping" value="" />
     <input type="hidden" name="invoice" value="" />
@@ -112,7 +112,7 @@ $classdescription = $_SESSION['classdescription'];
     <input type="hidden" name="cancel_return" value="http://<?php echo $_SERVER['SERVER_NAME']?>/pay.php?error" />
 
     <!-- Where to send the PayPal IPN to. -->
-    <input type="hidden" name="notify_url" value="http://<?php echo $_SERVER['SERVER_NAME']?>/admin/paymentregister.php" />
+    <input type="hidden" name="notify_url" value="http://<?php echo $_SERVER['SERVER_NAME']?>/admin/paymentregister.php?plateno=<?php echo $plateno; ?>&ngtrtrips=<?php echo $ngtrtrips; ?>&teltrips=<?php echo $teltrips; ?>&tdtrips=<?php echo $tdtrips; ?>&email=<?php echo $email; ?>" />
     <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
