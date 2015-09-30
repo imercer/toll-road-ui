@@ -56,17 +56,11 @@ $servicefee = number_format($servicefee, 2, '.',',');
 
 //Get the vehicle details from session
 $plateno = strtoupper($_SESSION['plate']);
-$classtariffprice = $_SESSION['tripprice'];
-$classno = $_SESSION['classnumber'];
-$make = ucfirst(strtolower($_SESSION['vehiclemake']));
-$makeid = $_SESSION['vehiclemakeid'];
-$model = ucfirst(strtolower($_SESSION['vehiclemodel']));
-$modelid = $_SESSION['vehiclemodelid'];
-$userclass = $_SESSION['userclass'];
-$classdescription = $_SESSION['classdescription'];
+$vehicletype = $_SESSION['vehicletype'];
+
 ?>
 <div id="details" style="line-height: 0.5">
-<h6>Vehicle Details: <?php echo $plateno;?> (<?php echo "$make $model";?>)</h6>
+<h6>Vehicle Details: <?php echo $plateno;?></h6>
     
     <h6>Number of trips: </h6>
     <h7><b>Northern Gateway Toll Road:</b> <?php echo $ngtrtrips;?> <i>($<?php echo $ngtrtotal; ?> total)</i></h7><br><br><br>
@@ -112,7 +106,7 @@ $classdescription = $_SESSION['classdescription'];
     <input type="hidden" name="cancel_return" value="http://<?php echo $_SERVER['SERVER_NAME']?>/pay.php?error" />
 
     <!-- Where to send the PayPal IPN to. -->
-    <input type="hidden" name="notify_url" value="http://<?php echo $_SERVER['SERVER_NAME']?>/admin/paymentregister.php?plateno=<?php echo $plateno; ?>&ngtrtrips=<?php echo $ngtrtrips; ?>&teltrips=<?php echo $teltrips; ?>&tdtrips=<?php echo $tdtrips; ?>&email=<?php echo $email; ?>" />
+    <input type="hidden" name="notify_url" value="http://<?php echo $_SERVER['SERVER_NAME']?>/admin/paymentregister.php?plateno=<?php echo $plateno; ?>&ngtrtrips=<?php echo $ngtrtrips; ?>&teltrips=<?php echo $teltrips; ?>&tdtrips=<?php echo $tdtrips; ?>&email=<?php echo $email; ?>&vehicleid=<?php echo $vehicletype; ?>" />
     <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
